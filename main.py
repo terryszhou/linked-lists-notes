@@ -48,12 +48,28 @@ class LinkedList:
             temp.next = self.tail
         self.size += 1
 
+    def insert_after(self, data, node_data):
+        temp = None
+        current = self.head
+        while current:
+            if current.data == node_data:
+                temp = current
+                break
+            current = current.next
+        if temp == None:
+            return "Check yo'self!"
+        newNode = Node(data, temp.next)
+        temp.next = newNode
+        self.size += 1
+
 
 myList = LinkedList()
 myList.insert_front("Taylor")
 myList.insert_front("Dave")
 myList.insert_front("Anna")
 myList.insert_end("King")
+myList.insert_after("Gavin", "Anna")
+myList.insert_after("Nick", "King")
 
 print(myList)
 print(len(myList))
